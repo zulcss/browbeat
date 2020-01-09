@@ -59,53 +59,53 @@ workloads:
     scenarios:
       - name: boot-and-associate-floating-ip
         enabled: true
-        file: rally/scale/boot-and-associate-floating-ip.yaml
+        file: rally/scale/nova/boot-and-associate-floating-ip.yaml
       - name: boot-and-delete-multiple
         enabled: true
-        file: rally/scale/boot-and-delete-multiple.yaml
+        file: rally/scale/nova/boot-and-delete-multiple.yaml
       - name: boot-and-delete-server-with-keypairs
         enabled: true
-        file: rally/scale/boot-and-delete-server-with-keypairs.yaml
+        file: rally/scale/nova/boot-and-delete-server-with-keypairs.yaml
       - name: boot-and-delete
         enabled: true
         net_id: ""
-        file: rally/scale/boot-and-delete.yaml
+        file: rally/scale/nova/boot-and-delete.yaml
       - name: boot-and-list
         enabled: true
-        file: rally/scale/boot-and-list.yaml
+        file: rally/scale/nova/boot-and-list.yaml
       - name: boot-and-show-server
         enabled: true
-        file: rally/scale/boot-and-show-server.yaml
+        file: rally/scale/nova/boot-and-show-server.yaml
       - name: boot-bounce-delete
         enabled: true
-        file: rally/scale/boot-bounce-delete.yaml
+        file: rally/scale/nova/boot-bounce-delete.yaml
       - name: boot-from-volume-and-delete
         enabled: true
-        file: rally/scale/boot-from-volume-and-delete.yaml
+        file: rally/scale/nova/boot-from-volume-and-delete.yaml
       - name: boot-from-volume-and-resize
         enabled: true
-        file: rally/scale/boot-from-volume-and-resize.yaml
+        file: rally/scale/nova/boot-from-volume-and-resize.yaml
       - name: boot-from-volume-snapshot
         enabled: true
-        file: rally/scale/boot-from-volume-snapshot.yaml
+        file: rally/scale/nova/boot-from-volume-snapshot.yaml
       - name: boot-from-volume
         enabled: true
-        file: rally/scale/boot-from-volume.yaml
+        file: rally/scale/nova/boot-from-volume.yaml
       - name: boot-server-attach-volume-and-list-attachments
         enabled: true
-        file: rally/scale/boot-server-attach-volume-and-list-attachments
+        file: rally/scale/nova/boot-server-attach-volume-and-list-attachments
       - name: create-and-delete-keypair
         enabled: true
-        file: rally/scale/create-and-delete-keypair.yaml
+        file: rally/scale/nova/create-and-delete-keypair.yaml
       - name: create-and-get-flavor
         enabled: true
-        file: rally/scale/create-and-get-flavor.yaml
+        file: rally/scale/nova/create-and-get-flavor.yaml
       - name: shelve-and-unshelve
         enabled: true
-        file: rally/scale/shelve-and-unshelve.yaml
+        file: rally/scale/nova/shelve-and-unshelve.yaml
       - name: suspend-and-resume
         enabled: true
-        file: rally/scale/suspend-and-resume.yaml
+        file: rally/scale/nova/suspend-and-resume.yaml
 
 
   - name: cinder
