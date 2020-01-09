@@ -1,0 +1,138 @@
+# Basic set of initial stress tests to test overcloud before running complete set of benchmarks.
+browbeat:
+  cloud_name: openstack
+  rerun: 1
+  # Two types of rerun:
+  # iteration reruns on the iteration
+  # complete reruns after all workloads complete
+  # rerun_type: complete
+  rerun_type: iteration
+ansible:
+  hosts: ansible/hosts
+  metadata_playbook: ansible/gather/stockpile.yml
+  ssh_config: ansible/ssh-config
+elasticsearch:
+  enabled: false
+  host: 1.1.1.1
+  port: 9200
+  regather: false
+  metadata_files:
+    - name: hardware-metadata
+      file: metadata/hardware-metadata.json
+    - name: environment-metadata
+      file: metadata/environment-metadata.json
+    - name: software-metadata
+      file: metadata/software-metadata.json
+    - name: version
+      file: metadata/version.json
+grafana:
+  enabled: false
+  host: example.grafana.com
+  port: 3000
+  dashboards:
+    - openstack-general-system-performance
+rally:
+  sleep_before: 5
+  sleep_after: 5
+  plugins:
+    - glance: rally/rally-plugins/glance
+    - neutron: rally/rally-plugins/neutron
+    - netcreate-boot: rally/rally-plugins/netcreate-boot
+    - workloads: rally/rally-plugins/workloads
+shaker:
+  server: 1.1.1.1
+  port: 5555
+  flavor: m1.small
+  join_timeout: 600
+  sleep_before: 0
+  sleep_after: 0
+  shaker_region: regionOne
+  external_host: 2.2.2.2
+
+workloads:
+  - name: nova
+    enabled: true
+    type: rally
+    concurrency:
+      - 10
+    times: 500
+    scenarios:
+      - name: boot-and-associate-floating-ip
+        enabled: true
+        file: rally/scale/nova/boot-and-associate-floating-ip.yaml
+      - name: boot-and-delete-multiple
+        enabled: true
+        file: rally/scale/nova/boot-and-delete-multiple.yaml
+      - name: boot-and-delete-server-with-keypairs
+        enabled: true
+        file: rally/scale/nova/boot-and-delete-server-with-keypairs.yaml
+      - name: boot-and-delete
+        enabled: true
+        net_id: ""
+        file: rally/scale/nova/boot-and-delete.yaml
+      - name: boot-and-list
+        enabled: true
+        file: rally/scale/nova/boot-and-list.yaml
+      - name: boot-and-show-server
+        enabled: true
+        file: rally/scale/nova/boot-and-show-server.yaml
+      - name: boot-bounce-delete
+        enabled: true
+        file: rally/scale/nova/boot-bounce-delete.yaml
+      - name: boot-from-volume-and-delete
+        enabled: true
+        file: rally/scale/nova/boot-from-volume-and-delete.yaml
+      - name: boot-from-volume-and-resize
+        enabled: true
+        file: rally/scale/nova/boot-from-volume-and-resize.yaml
+      - name: boot-from-volume-snapshot
+        enabled: true
+        file: rally/scale/nova/boot-from-volume-snapshot.yaml
+      - name: boot-from-volume
+        enabled: true
+        file: rally/scale/nova/boot-from-volume.yaml
+      - name: boot-server-attach-volume-and-list-attachments
+        enabled: true
+        file: rally/scale/nova/boot-server-attach-volume-and-list-attachments
+      - name: create-and-delete-keypair
+        enabled: true
+        file: rally/scale/nova/create-and-delete-keypair.yaml
+      - name: create-and-get-flavor
+        enabled: true
+        file: rally/scale/nova/create-and-get-flavor.yaml
+      - name: shelve-and-unshelve
+        enabled: true
+        file: rally/scale/nova/shelve-and-unshelve.yaml
+      - name: suspend-and-resume
+        enabled: true
+        file: rally/scale/nova/suspend-and-resume.yaml
+
+
+  - name: cinder
+    enabled: true
+    type: rally
+    concurrency:
+      - 10
+    times: 500
+    scenarios:
+        - name: create-volume
+          enabled: true
+          file: rally/scale/cinder/create-volume.yaml
+        - name: create-volume-from-snapshot
+          enabled: true
+          file: rally/scale/cinder/create-volume-from-snapshot.yaml
+        - name: create-snapshot-and-attach-volume
+          enabled: true
+          file: rally/scale/cinder/create-snapshot-and-attach-volume.yaml
+        - name: create-and-list-volume
+          enabled: true
+          file: rally/scale/cinder/create-and-list-volume.yaml
+        - name: create-and-list-snapshots
+          enabled: true
+          file: rally/scale/cinder/create-and-list-snapshots.yaml
+        - name: create-and-delete-snapshot
+          enabled: true
+          file: rally/scenarios/create-and-delete-snapshot.yaml
+        - name: create-and-delete-encryption-type
+          enabled: true
+          file: rally/scenarios/create-and-delete-encryption-type.yaml

@@ -54,8 +54,8 @@ workloads:
     enabled: true
     type: rally
     concurrency:
-      - 2
-    times: 10
+      - 1
+    times: 1
     scenarios:
       - name: boot-and-associate-floating-ip
         enabled: true
@@ -112,8 +112,8 @@ workloads:
     enabled: true
     type: rally
     concurrency:
-      - 2
-    times: 10
+      - 1
+    times: 1
     scenarios:
         - name: create-volume
           enabled: true
