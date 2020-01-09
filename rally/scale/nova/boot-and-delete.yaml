@@ -1,0 +1,45 @@
+{% set net_id = net_id or "" %}
+{% set flavor_name = flavor_name or "m1.tiny" %}
+---
+  NovaServers.boot_and_delete_server:
+    -
+      args:
+        flavor:
+            name: "{{flavor_name}}"
+        image:
+            name: "cirros"
+        nics:
+          - net-id: "{{ net_id }}"
+        force_delete: false
+      runner:
+        type: "constant"
+        times: {{times}}
+        concurrency: {{concurrency}}
+      context:
+        users:
+          tenants: 3
+          users_per_tenant: 2
+      sla:
+        failure_rate:
+          max: 0
+    -
+      args:
+        flavor:
+            name: "{{flavor_name}}"
+        image:
+            name: "cirros"
+        nics:
+          - net-id: 278169e5-aefe-4946-900d-50302d1e0da5
+      runner:
+        type: "constant"
+        times: {{times}}
+        concurrency: {{concurrency}}
+      context:
+        users:
+          tenants: 3
+          users_per_tenant: 2
+        network:
+            start_cidr: "192.0.2.0/24"
+      sla:
+        failure_rate:
+          max: 0
