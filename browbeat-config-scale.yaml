@@ -92,7 +92,7 @@ workloads:
         file: rally/scale/nova/boot-from-volume.yaml
       - name: boot-server-attach-volume-and-list-attachments
         enabled: true
-        file: rally/scale/nova/boot-server-attach-volume-and-list-attachments
+        file: rally/scale/nova/boot-server-attach-volume-and-list-attachments.yaml
       - name: create-and-delete-keypair
         enabled: true
         file: rally/scale/nova/create-and-delete-keypair.yaml
@@ -128,10 +128,10 @@ workloads:
           file: rally/scale/cinder/create-and-list-volume.yaml
         - name: create-and-list-snapshots
           enabled: true
-          file: rally/scale/cinder/create-and-list-snapshots.yaml
+          file: rally/scale/cinder/cinder/create-and-list-snapshots.yaml
         - name: create-and-delete-snapshot
           enabled: true
-          file: rally/scenarios/create-and-delete-snapshot.yaml
+          file: rally/scenarios/cinder/create-and-delete-snapshot.yaml
         - name: create-and-delete-encryption-type
           enabled: true
-          file: rally/scenarios/create-and-delete-encryption-type.yaml
+          file: rally/scenarios/cinder/create-and-delete-encryption-type.yaml
