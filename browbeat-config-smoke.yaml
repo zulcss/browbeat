@@ -68,7 +68,6 @@ workloads:
         file: rally/scale/nova/boot-and-delete-server-with-keypairs.yaml
       - name: boot-and-delete
         enabled: true
-        net_id: ""
         file: rally/scale/nova/boot-and-delete.yaml
       - name: boot-and-list
         enabled: true

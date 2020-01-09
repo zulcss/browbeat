@@ -1,4 +1,3 @@
-{% set net_id = net_id or "" %}
 {% set flavor_name = flavor_name or "m1.tiny" %}
 ---
   NovaServers.boot_and_delete_server:
@@ -8,8 +7,6 @@
             name: "{{flavor_name}}"
         image:
             name: "cirros"
-        nics:
-          - net-id: "{{ net_id }}"
         force_delete: false
       runner:
         type: "constant"
