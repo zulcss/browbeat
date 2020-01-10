@@ -131,7 +131,7 @@ workloads:
           file: rally/scale/cinder/cinder/create-and-list-snapshots.yaml
         - name: create-and-delete-snapshot
           enabled: true
-          file: rally/scenarios/cinder/create-and-delete-snapshot.yaml
+          file: rally/scalecinder/create-and-delete-snapshot.yaml
         - name: create-and-delete-encryption-type
           enabled: true
-          file: rally/scenarios/cinder/create-and-delete-encryption-type.yaml
+          file: rally/scale/cinder/create-and-delete-encryption-type.yaml

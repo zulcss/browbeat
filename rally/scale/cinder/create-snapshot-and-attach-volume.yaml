@@ -3,7 +3,7 @@
   CinderVolumes.create_snapshot_and_attach_volume:
     -
       args:
-          volume_type: "lvmdriver-1"
+          volume_type: "tripleo"
           size:
               min: 1
               max: 5
@@ -24,7 +24,7 @@
           max: 0
     -
       args:
-          volume_type: "test"
+          volume_type: "tripleo"
           size:
               min: 1
               max: 5
